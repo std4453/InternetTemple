@@ -1,0 +1,7 @@
+.button {
+  cursor: pointer;
+}
+
+.button:active {
+  transform: translateX(4px);
+}
