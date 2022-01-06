@@ -12,8 +12,6 @@ import merch2 from "assets/merchs/2.jpg";
 import merch3 from "assets/merchs/3.jpg";
 import merch4 from "assets/merchs/4.jpg";
 
-import { XorShift } from "xorshift";
-import stringHash from "string-hash";
 import seedrandom from "seedrandom";
 
 const avatars = [

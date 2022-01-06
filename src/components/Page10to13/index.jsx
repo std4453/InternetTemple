@@ -42,9 +42,7 @@ export default function Page10to13() {
     if (!name) {
       return null;
     }
-    const ret = generate(name);
-    console.log(ret);
-    return ret;
+    return generate(name);
   }, [name]);
 
   const x = useMotionValue(window.innerWidth / 2);
@@ -56,6 +54,10 @@ export default function Page10to13() {
   });
   const xInverted = useTransform(x, (v) => -v);
   const yInverted = useTransform(y, (v) => -v);
+
+  const [inside, setInside] = useState(false);
+  const handleEnter = useCallback(() => setInside(true), []);
+  const handleLeave = useCallback(() => setInside(false), []);
 
   return (
     <>
@@ -156,6 +158,8 @@ export default function Page10to13() {
             top={386}
             className={styles.handArea}
             onMouseMove={handleMove}
+            onMouseEnter={handleEnter}
+            onMouseLeave={handleLeave}
           >
             <motion.div
               style={{
@@ -168,6 +172,12 @@ export default function Page10to13() {
                 pointerEvents: "none",
                 translateX: x,
                 translateY: y,
+              }}
+              animate={{
+                opacity: inside ? 1 : 0,
+              }}
+              transition={{
+                duration: 0.1,
               }}
             >
               <div
@@ -286,7 +296,7 @@ export default function Page10to13() {
             />
           </a>
         )}
-        {result || (
+        {!result && (
           <AbsoluteImage
             height={255}
             width={183}
@@ -319,7 +329,7 @@ export default function Page10to13() {
             />
           </>
         )}
-        {result || (
+        {!result && (
           <AbsoluteImage
             height={389}
             width={279}
