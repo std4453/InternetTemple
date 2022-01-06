@@ -1,0 +1,47 @@
+.input {
+  font-size: 1.875vw;
+  font-family: 'Klee One', cursive;
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+
+.danmaku {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  left: 100%;
+  top: 0;
+  bottom: 0;
+  justify-content: space-around;
+  align-items: flex-start;
+  z-index: 100;
+}
+
+.lane {
+  height: 1.875vw;
+  position: relative;
+}
+
+@keyframes danmaku {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100vw - 100%));
+  }
+}
+
+.item {
+  font-family: 'Klee One', cursive;
+  font-size: 1.875vw;
+  line-height: 1.875vw;
+  white-space: nowrap;
+  animation-name: danmaku;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+}

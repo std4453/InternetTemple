@@ -1,0 +1,60 @@
+.input {
+  outline: none;
+  border: none;
+  color: #000000;
+  background-color: transparent;
+  font-size: 1.4vw;
+  font-family: "Klee One", cursive;
+}
+.input:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.avatar {
+  /* 32px / 207px */
+  border-radius: 15.5%;
+}
+
+.merch {
+  /* 64px / 430px */
+  border-radius: 15.5%;
+  transform: rotate(-18.69deg);
+}
+
+.link {
+  display: block;
+}
+
+.handArea {
+  cursor: none;
+}
+
+.advice {
+  text-align: center;
+  /* 48px */
+  font-size: 2.5vw;
+  white-space: nowrap;
+  font-family: 'Noto Sans TC', sans-serif;
+  line-height: 1.21;
+  color: #FFFFFF;
+}
+
+@keyframes float {
+  from {
+    transform: translateY(-60%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.hint {
+  text-align: center;
+  font-family: 'Klee one', cursive;
+  /* 36px */
+  font-size: 1.875vw;
+  z-index: 103;
+
+  animation: float 1.15s cubic-bezier(0.5, 0.06, 0.5, 0.94) infinite alternate;
+}

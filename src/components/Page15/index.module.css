@@ -1,0 +1,12 @@
+@keyframes clouds {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-114.115vw);
+  }
+}
+
+.clouds {
+  animation: clouds 30s linear infinite;
+}

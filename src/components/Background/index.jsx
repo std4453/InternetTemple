@@ -8,11 +8,21 @@ import page7 from "assets/page_7.png";
 import page8 from "assets/page_8.png";
 import page9 from "assets/page_9.png";
 import page10 from "assets/page_10.png";
+import page11 from "assets/page_11.png";
+import page12 from "assets/page_12.png";
+import page13 from "assets/page_13.png";
+import page14 from "assets/page_14.png";
+import page15 from "assets/page_15.png";
 import styles from "./index.module.css";
 
 export default function Background() {
   return (
     <div className={styles.root}>
+      <img src={page15} />
+      <img src={page14} />
+      <img src={page13} />
+      <img src={page12} />
+      <img src={page11} />
       <img src={page10} />
       <img src={page9} />
       <img src={page8} />

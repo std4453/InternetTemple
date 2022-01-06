@@ -1,0 +1,13 @@
+.root {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.inner {
+  position: relative;
+}
