@@ -1,11 +1,5 @@
 import { ScrollContext, useScroll } from "components/useOnScroll";
-import {
-  useCallback,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from "react";
+import { useCallback, useEffect, useRef } from "react";
 import styles from "./index.module.css";
 
 export default function Wrapper({ children, numPages }) {

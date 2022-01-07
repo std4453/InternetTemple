@@ -5,3 +5,50 @@
 .button:active {
   transform: translate(4px, 4px);
 }
+
+.text {
+  font-family: 'Noto Sans TC', sans-serif;
+  /* 24px */
+  font-size: 1.25vw;
+  line-height: 1.214em;
+  color: #000000;
+  text-align: justify;
+}
+
+.no {
+  font-family: 'Alike Angular', serif;
+  /* 48px */
+  font-size: 2.5vw;
+  text-align: right;
+  line-height: 1em;
+  color: #000000;
+}
+
+.lucky {
+  font-family: 'Alike Angular', serif;
+  /* 48px */
+  font-size: 2.5vw;
+  text-align: right;
+  line-height: 1em;
+  color: #EF7055;
+}
+
+@font-face {
+  font-family: 'Alike Angular';
+  src: url(assets/alike-angular-regular.ttf);
+}
+
+.textBg {
+  border: 2px solid #000000;
+  background-color: #FFFFFF;
+}
+
+.luckyBg {
+  border: 2px solid #000000;
+  /* 6px */
+  box-shadow: -0.3125vw 0.3125vw 0 black;
+}
+
+.ballEnd {
+  overflow: hidden;
+}
