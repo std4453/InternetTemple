@@ -115,7 +115,7 @@ const useDanmaku = () => {
         ))}
       </div>
     ),
-    [revision],
+    [revision], // eslint-disable-line react-hooks/exhaustive-deps
   );
 
   return [send, elements];
@@ -154,15 +154,18 @@ export default function Page14() {
   useDanmakuPool(send);
 
   const inputRef = useRef();
-  const handleSubmit = useCallback((event) => {
-    event?.preventDefault();
-    if (!inputRef.current.value) {
+  const handleSubmit = useCallback(
+    (event) => {
+      event?.preventDefault();
+      if (!inputRef.current.value) {
+        return false;
+      }
+      send(inputRef.current.value);
+      inputRef.current.value = "";
       return false;
-    }
-    send(inputRef.current.value);
-    inputRef.current.value = "";
-    return false;
-  }, []);
+    },
+    [send],
+  );
 
   return (
     <Page n={14}>

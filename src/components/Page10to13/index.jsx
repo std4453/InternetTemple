@@ -48,11 +48,14 @@ export default function Page10to13() {
 
   const x = useMotionValue(window.innerWidth / 2);
   const y = useMotionValue(0);
-  const handleMove = useCallback((event) => {
-    x.set(event.nativeEvent.offsetX);
-    y.set(event.nativeEvent.offsetY);
-    event.stopPropagation();
-  });
+  const handleMove = useCallback(
+    (event) => {
+      x.set(event.nativeEvent.offsetX);
+      y.set(event.nativeEvent.offsetY);
+      event.stopPropagation();
+    },
+    [x, y],
+  );
   const xInverted = useTransform(x, (v) => -v);
   const yInverted = useTransform(y, (v) => -v);
 

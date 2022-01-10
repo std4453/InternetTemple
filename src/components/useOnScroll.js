@@ -37,7 +37,7 @@ export const useScroll = () => {
       listen,
       unlisten,
     }),
-    [listen, unlisten, updateScroll],
+    [listen, unlisten],
   );
 
   return [value, updateScroll];
@@ -53,17 +53,20 @@ export const useOnScroll = (callback) => {
         unlisten(callback);
       };
     }
-  }, [callback]);
+  }, [callback, listen, unlisten]);
 };
 
 export const useScrolledAfter = (threshold) => {
   const [scrolled, setScrolled] = useState(false);
 
-  const callback = useCallback((value) => {
-    if (value > threshold) {
-      setScrolled(true);
-    }
-  }, []);
+  const callback = useCallback(
+    (value) => {
+      if (value > threshold) {
+        setScrolled(true);
+      }
+    },
+    [threshold],
+  );
   useOnScroll(callback);
 
   return scrolled;

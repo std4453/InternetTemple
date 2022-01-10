@@ -22,7 +22,7 @@ export default function Wrapper({ children, numPages }) {
     return () => {
       window.removeEventListener("scroll", listener);
     };
-  }, [handleScroll]);
+  }, [handleScroll, numPages]);
 
   return (
     <ScrollContext.Provider value={value}>

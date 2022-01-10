@@ -1,10 +1,4 @@
-import React, {
-  useCallback,
-  useEffect,
-  useLayoutEffect,
-  useMemo,
-  useState,
-} from "react";
+import React, { useCallback, useLayoutEffect, useMemo, useState } from "react";
 import ballImage from "assets/ball.png";
 import { Draw } from "./draw";
 import { Path } from "./help";
@@ -29,7 +23,6 @@ const balls = {
 } as const;
 
 let type: keyof typeof balls | "" = "";
-let draw: Draw | null = null;
 
 type MapT<Props> = {
   [x in `t${Extract<keyof Props, string>}`]: number;
@@ -136,13 +129,14 @@ const drawFrame = ({
 export const useCanvas = (canvasRef: React.RefObject<HTMLCanvasElement>) => {
   const [startTime, setStartTime] = useState(0);
 
-  const image = useMemo(() => new Image(), []);
   const [imageLoaded, setImageLoaded] = useState(false);
-  useEffect(() => {
+  const image = useMemo(() => {
+    const image = new Image();
     image.src = ballImage;
     image.onload = () => {
       setImageLoaded(true);
     };
+    return image;
   }, []);
 
   const [spline, setSpline] = useState<Path>();
@@ -152,15 +146,19 @@ export const useCanvas = (canvasRef: React.RefObject<HTMLCanvasElement>) => {
     let stopped = false;
     const frame = () => {
       if (type) {
-        const elapsed = new Date().getTime() - startTime;
-        const t = elapsed / duration;
-        drawFrame({
-          ctx,
-          canvas: canvasRef.current!,
-          ballImage: image,
-          t,
-          path: spline!,
-        });
+        if (imageLoaded) {
+          console.warn("image not loaded!");
+        } else {
+          const elapsed = new Date().getTime() - startTime;
+          const t = elapsed / duration;
+          drawFrame({
+            ctx,
+            canvas: canvasRef.current!,
+            ballImage: image,
+            t,
+            path: spline!,
+          });
+        }
       }
       if (!stopped) {
         requestAnimationFrame(frame);
@@ -170,14 +168,13 @@ export const useCanvas = (canvasRef: React.RefObject<HTMLCanvasElement>) => {
     return () => {
       stopped = true;
     };
-  }, [spline]);
+  }, [spline, canvasRef, image, startTime, imageLoaded]);
 
   const trigger = useCallback(
     (newDraw: Draw, newType: keyof typeof balls | undefined) => {
       if (newType) {
         type = newType;
       }
-      draw = newDraw;
       setStartTime(new Date().getTime());
       setSpline(new Path(newDraw.lucky));
     },

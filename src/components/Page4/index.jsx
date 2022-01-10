@@ -1,7 +1,6 @@
 import { AbsoluteImage } from "components/Absolute";
 import censer from "assets/page_4_censer.png";
 import Page from "components/Page";
-import { motion } from "framer-motion";
 import { calcScrollValue, useScrolledAfter } from "components/useOnScroll";
 
 export default function Page4() {
