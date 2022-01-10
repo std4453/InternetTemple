@@ -1,21 +1,19 @@
-import { useMemo } from "react";
+import React, { ComponentProps, useMemo } from "react";
 import { isOnline } from "utils";
 
-export function Image({
-  src,
-  query: queryStr,
-}: {
-  src: string;
+export interface ImageProps extends ComponentProps<"img"> {
   query?: string;
-}) {
-  const query = useMemo(() => (isOnline() ? `?${queryStr}` : ""), []);
+}
+
+export function Image({ src, query = "", ...props }: ImageProps) {
+  const actualQuery = useMemo(() => (isOnline() ? `?${query}` : ""), [query]);
   const domain = useMemo(
     () => (isOnline() ? "https://static.std4453.com/internet-temple" : ""),
     [],
   );
   const realSrc = useMemo(
-    () => `${domain}${src}${query}`,
-    [domain, src, query],
+    () => `${domain}${src}${actualQuery}`,
+    [domain, src, actualQuery],
   );
-  return <img src={realSrc} />;
+  return <img src={realSrc} {...props} />;
 }
