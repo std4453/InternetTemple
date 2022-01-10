@@ -8,33 +8,38 @@ import {
 } from "components/Absolute";
 import Page from "components/Page";
 import { forwardRef, useCallback, useRef, useState } from "react";
-import { useCanvas } from "./canvas";
-import { duration } from "./constants";
+import { useCanvas1, useCanvas2 } from "./canvas";
+import { duration, duration2 } from "./constants";
 import { chooseDraw } from "./draw";
 import styles from "./index.module.css";
 
-function _Canvas({ canvasWidth, canvasHeight, ...props }, ref) {
+const Canvas = forwardRef(({ canvasWidth, canvasHeight, ...props }, ref) => {
   return (
     <canvas {...props} width={canvasWidth} height={canvasHeight} ref={ref} />
   );
-}
-
-const Canvas = forwardRef(_Canvas);
+});
 
 export default function Page89() {
-  const canvasRef = useRef(null);
-  const trigger = useCanvas(canvasRef);
+  const canvas1Ref = useRef(null);
+  const trigger1 = useCanvas1(canvas1Ref);
+  const canvas2Ref = useRef(null);
+  const [trigger2, clear2] = useCanvas2(canvas2Ref);
+
   const [draw, setDraw] = useState(null);
   const redraw = useCallback(
     (type) => {
       setDraw(null);
       const newDraw = chooseDraw();
-      trigger(newDraw, type);
+      trigger1(newDraw.lucky, type);
+      clear2();
+      setTimeout(() => {
+        trigger2(newDraw.lucky, type);
+      }, duration);
       setTimeout(() => {
         setDraw(newDraw);
-      }, duration);
+      }, duration + duration2);
     },
-    [trigger],
+    [trigger1, trigger2, clear2],
   );
 
   return (
@@ -94,13 +99,23 @@ export default function Page89() {
         />
         <Absolute
           component={Canvas}
-          ref={canvasRef}
+          ref={canvas1Ref}
           height={565}
           width={873}
           left={86}
           top={574}
           canvasWidth={873 * 2}
           canvasHeight={565 * 2}
+        />
+        <Absolute
+          height={267}
+          width={879}
+          left={517}
+          top={281}
+          component={Canvas}
+          ref={canvas2Ref}
+          canvasWidth={879 * 2}
+          canvasHeight={267 * 2}
         />
         <Absolute
           height={267}
