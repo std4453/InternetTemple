@@ -10,7 +10,7 @@ export default function Wrapper({ children, numPages }) {
   useEffect(() => {
     outerRef.current.scrollTo(0, (numPages - 1) * window.innerHeight);
     setScrollInit(true);
-  }, []);
+  }, [numPages]);
   const [value, updateScroll] = useScroll();
   const handleScroll = useCallback(() => {
     if (!scrollInit) return;

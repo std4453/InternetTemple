@@ -146,19 +146,15 @@ export const useCanvas = (canvasRef: React.RefObject<HTMLCanvasElement>) => {
     let stopped = false;
     const frame = () => {
       if (type) {
-        if (imageLoaded) {
-          console.warn("image not loaded!");
-        } else {
-          const elapsed = new Date().getTime() - startTime;
-          const t = elapsed / duration;
-          drawFrame({
-            ctx,
-            canvas: canvasRef.current!,
-            ballImage: image,
-            t,
-            path: spline!,
-          });
-        }
+        const elapsed = new Date().getTime() - startTime;
+        const t = elapsed / duration;
+        drawFrame({
+          ctx,
+          canvas: canvasRef.current!,
+          ballImage: image,
+          t,
+          path: spline!,
+        });
       }
       if (!stopped) {
         requestAnimationFrame(frame);
@@ -168,17 +164,20 @@ export const useCanvas = (canvasRef: React.RefObject<HTMLCanvasElement>) => {
     return () => {
       stopped = true;
     };
-  }, [spline, canvasRef, image, startTime, imageLoaded]);
+  }, [spline, canvasRef, image, startTime]);
 
   const trigger = useCallback(
     (newDraw: Draw, newType: keyof typeof balls | undefined) => {
+      if (!imageLoaded) {
+        console.warn("image not loaded");
+      }
       if (newType) {
         type = newType;
       }
       setStartTime(new Date().getTime());
       setSpline(new Path(newDraw.lucky));
     },
-    [],
+    [imageLoaded],
   );
 
   return trigger;
