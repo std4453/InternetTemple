@@ -13,7 +13,7 @@ export default function Wrapper({ children, numPages }) {
       innerHeight - (outerRef.current.scrollTop + window.innerHeight);
     const value = (scrollBottom / window.innerWidth) * 100;
     updateScroll(value);
-  }, [updateScroll]);
+  }, [updateScroll, numPages]);
   useEffect(() => {
     const listener = () => {
       handleScroll();
@@ -22,7 +22,7 @@ export default function Wrapper({ children, numPages }) {
     return () => {
       window.removeEventListener("scroll", listener);
     };
-  }, [handleScroll, numPages]);
+  }, [handleScroll]);
 
   return (
     <ScrollContext.Provider value={value}>
