@@ -247,7 +247,7 @@ export const useCanvas2 = (canvasRef: React.RefObject<HTMLCanvasElement>) => {
 
   const clear = useCallback(() => {
     setType("");
-  }, []);
+  }, [setType]);
 
   return [trigger, clear];
 };
