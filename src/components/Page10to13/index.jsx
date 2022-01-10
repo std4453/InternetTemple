@@ -1,23 +1,24 @@
-import bg10 from "assets/page_10.png";
 import text10 from "assets/page_10_text.png";
-import bg11 from "assets/page_11.png";
+import cloudLeft from "assets/page_11_cloud_left.png";
+import cloudRight from "assets/page_11_cloud_right.png";
 import hand from "assets/page_11_hand.png";
-import text12 from "assets/page_12_text.png";
+import question12 from "assets/page_12_question.png";
+import question13 from "assets/page_13_question.png";
 import {
   Absolute,
   AbsoluteClickArea,
   AbsoluteImage,
 } from "components/Absolute";
+import { Image } from "components/Image";
 import Page from "components/Page";
 import { scaled } from "components/util";
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import { useCallback, useMemo, useRef, useState } from "react";
 import generate from "./generate";
 import styles from "./index.module.css";
-import cloudLeft from "assets/page_11_cloud_left.png";
-import cloudRight from "assets/page_11_cloud_right.png";
-import question12 from "assets/page_12_question.png";
-import question13 from "assets/page_13_question.png";
+const bg10 = "/bg/page_10.png";
+const bg11 = "/bg/page_11.png";
+const text12 = "/bg/page_12_text.png";
 
 export default function Page10to13() {
   const [name, setName] = useState("");
@@ -209,14 +210,18 @@ export default function Page10to13() {
                     height={1080}
                     left={0}
                     top={0}
+                    component={Image}
                     src={bg11}
+                    query={`?imageMogr2/thumbnail/${window.innerWidth}x/format/webp`}
                   />
                   <AbsoluteImage
                     width={1920}
                     height={1080}
                     left={0}
                     top={1080}
+                    component={Image}
                     src={bg10}
+                    query={`?imageMogr2/thumbnail/${window.innerWidth}x/format/webp`}
                   />
                 </motion.div>
                 {/* 反向效果 */}
@@ -282,6 +287,7 @@ export default function Page10to13() {
           width={1920}
           left={0}
           top={-219}
+          component={Image}
           src={text12}
         />
         {result && (

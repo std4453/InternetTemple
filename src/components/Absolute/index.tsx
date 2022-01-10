@@ -1,12 +1,10 @@
 import { motion } from "framer-motion";
-import React, {
+import {
   ComponentPropsWithoutRef,
   ComponentPropsWithRef,
   CSSProperties,
   ElementType,
-  ForwardedRef,
   forwardRef,
-  JSXElementConstructor,
   ReactElement,
 } from "react";
 
