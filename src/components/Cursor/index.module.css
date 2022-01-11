@@ -1,0 +1,13 @@
+.area {
+  cursor: none;
+}
+
+.inner {
+  width: 0;
+  height: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  user-select: none;
+  pointer-events: none;
+}

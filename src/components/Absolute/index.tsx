@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import {
+  ComponentProps,
   ComponentPropsWithoutRef,
   ComponentPropsWithRef,
   CSSProperties,
@@ -24,19 +25,19 @@ type PolymorphicPropsWithRef<T extends ElementType, P = {}> = P &
     ref?: PolymorphicRef<T>;
   };
 
-interface AbsoluteSelfProps {
+interface AbsoluteSelfProps<Style = CSSProperties> {
   left?: number;
   top?: number;
   right?: number;
   bottom?: number;
   width?: number;
   height?: number;
-  style?: CSSProperties;
+  style?: Style;
 }
 
-type AbsoluteProps<T extends ElementType> = PolymorphicPropsWithRef<
+export type AbsoluteProps<T extends ElementType> = PolymorphicPropsWithRef<
   T,
-  AbsoluteSelfProps
+  AbsoluteSelfProps<ComponentProps<T>["style"]>
 >;
 
 type AbsoluteComponent = <T extends ElementType = "div">(
@@ -82,10 +83,8 @@ interface AbsoluteClickAreaSelfProps extends AbsoluteSelfProps {
   onClick?: () => void;
 }
 
-type AbsoluteClickAreaProps<T extends ElementType> = PolymorphicPropsWithRef<
-  T,
-  AbsoluteClickAreaSelfProps
->;
+export type AbsoluteClickAreaProps<T extends ElementType> =
+  PolymorphicPropsWithRef<T, AbsoluteClickAreaSelfProps>;
 
 type AbsoluteClickAreaComponent = <T extends ElementType = "div">(
   props: AbsoluteClickAreaProps<T>,
@@ -115,7 +114,7 @@ interface AbsoluteImageSelfProps extends AbsoluteSelfProps {
   motion?: boolean;
 }
 
-type AbsoluteImageProps<T extends ElementType> = PolymorphicPropsWithRef<
+export type AbsoluteImageProps<T extends ElementType> = PolymorphicPropsWithRef<
   T,
   AbsoluteImageSelfProps
 >;

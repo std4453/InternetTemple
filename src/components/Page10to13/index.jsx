@@ -7,12 +7,12 @@ import question13 from "assets/page_13_question.png";
 import {
   Absolute,
   AbsoluteClickArea,
-  AbsoluteImage,
+  AbsoluteImage
 } from "components/Absolute";
+import { Cursor, CursorInverted } from "components/Cursor";
 import { Image } from "components/Image";
 import Page from "components/Page";
-import { scaled } from "components/util";
-import { motion, useMotionValue, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { useCallback, useMemo, useRef, useState } from "react";
 import generate from "./generate";
 import styles from "./index.module.css";
@@ -45,23 +45,6 @@ export default function Page10to13() {
     }
     return generate(name);
   }, [name]);
-
-  const x = useMotionValue(window.innerWidth / 2);
-  const y = useMotionValue(0);
-  const handleMove = useCallback(
-    (event) => {
-      x.set(event.nativeEvent.offsetX);
-      y.set(event.nativeEvent.offsetY);
-      event.stopPropagation();
-    },
-    [x, y],
-  );
-  const xInverted = useTransform(x, (v) => -v);
-  const yInverted = useTransform(y, (v) => -v);
-
-  const [inside, setInside] = useState(false);
-  const handleEnter = useCallback(() => setInside(true), []);
-  const handleLeave = useCallback(() => setInside(false), []);
 
   return (
     <>
@@ -155,133 +138,79 @@ export default function Page10to13() {
       </Page>
       <Page n={11}>
         {result && (
-          <Absolute
-            height={880}
-            width={1920}
-            left={0}
-            top={386}
-            className={styles.handArea}
-            onMouseMove={handleMove}
-            onMouseEnter={handleEnter}
-            onMouseLeave={handleLeave}
-          >
-            <motion.div
+          <Cursor height={880} width={1920} left={0} top={386} autoHide>
+            <Absolute
+              left={-146}
+              top={-63}
+              width={290}
+              height={157}
               style={{
-                width: 0,
-                height: 0,
-                position: "absolute",
-                left: 0,
-                top: 0,
-                userSelect: "none",
-                pointerEvents: "none",
-                translateX: x,
-                translateY: y,
-              }}
-              animate={{
-                opacity: inside ? 1 : 0,
-              }}
-              transition={{
-                duration: 0.1,
+                overflow: "hidden",
+                clipPath:
+                  "path('M65 -16.5C80.5 -16.5 110.5 -10 148.5 15C158.333 4.5 183.8 -16.5 207 -16.5C236 -16.5 281 34 284 62C287 90 255 141.5 232.5 140.5C210 139.5 162 118 140 107.5C125.5 115 93 139 65 136C37 133 -6.5 108 -6.5 68.5C-6.5 29 49.5 -16.5 65 -16.5Z')",
               }}
             >
-              <div
-                style={{
-                  position: "absolute",
-                  left: scaled(-146),
-                  top: scaled(-63),
-                  width: scaled(290),
-                  height: scaled(157),
-                  overflow: "hidden",
-                  clipPath:
-                    "path('M65 -16.5C80.5 -16.5 110.5 -10 148.5 15C158.333 4.5 183.8 -16.5 207 -16.5C236 -16.5 281 34 284 62C287 90 255 141.5 232.5 140.5C210 139.5 162 118 140 107.5C125.5 115 93 139 65 136C37 133 -6.5 108 -6.5 68.5C-6.5 29 49.5 -16.5 65 -16.5Z')",
-                }}
-              >
-                {/* 背景图 */}
-                <motion.div
-                  style={{
-                    position: "absolute",
-                    top: scaled(-386 + 68),
-                    left: scaled(0 + 137),
-                    width: scaled(1920),
-                    height: scaled(1080),
-                    translateX: xInverted,
-                    translateY: yInverted,
-                  }}
-                >
-                  <AbsoluteImage
-                    width={1920}
-                    height={1080}
-                    left={0}
-                    top={0}
-                    component={Image}
-                    src={bg11}
-                    query={`?imageMogr2/thumbnail/${window.innerWidth}x/format/webp`}
-                  />
-                  <AbsoluteImage
-                    width={1920}
-                    height={1080}
-                    left={0}
-                    top={1080}
-                    component={Image}
-                    src={bg10}
-                    query={`?imageMogr2/thumbnail/${window.innerWidth}x/format/webp`}
-                  />
-                </motion.div>
-                {/* 反向效果 */}
-                <div
-                  style={{
-                    position: "absolute",
-                    left: 0,
-                    top: 0,
-                    right: 0,
-                    bottom: 0,
-                    mixBlendMode: "difference",
-                    backgroundColor: "#A4ADFF",
-                  }}
+              {/* 背景图 */}
+              <CursorInverted left={146} top={63} width={1920} height={1080}>
+                <AbsoluteImage
+                  width={1920}
+                  height={1080}
+                  left={0}
+                  top={0}
+                  component={Image}
+                  src={bg11}
+                  query={`?imageMogr2/thumbnail/${window.innerWidth}x/format/webp`}
                 />
-                {/* 文字 */}
-                <motion.div
-                  style={{
-                    position: "absolute",
-                    top: scaled(-386 + 68),
-                    left: scaled(0 + 137),
-                    width: scaled(1920),
-                    height: scaled(1080),
-                    translateX: xInverted,
-                    translateY: yInverted,
-                  }}
-                >
-                  <Absolute
-                    left={184}
-                    top={434}
-                    width={996}
-                    className={styles.advice}
-                  >
-                    {result.advice1}
-                  </Absolute>
-                  <Absolute
-                    left={834}
-                    top={817}
-                    right={119}
-                    bottom={178}
-                    className={styles.advice}
-                  >
-                    {result.advice2}
-                  </Absolute>
-                </motion.div>
-              </div>
-              <img
+                <AbsoluteImage
+                  width={1920}
+                  height={1080}
+                  left={0}
+                  top={1080}
+                  component={Image}
+                  src={bg10}
+                  query={`?imageMogr2/thumbnail/${window.innerWidth}x/format/webp`}
+                />
+              </CursorInverted>
+              {/* 反向效果 */}
+              <Absolute
+                left={0}
+                top={0}
+                right={0}
+                bottom={0}
                 style={{
-                  position: "relative",
-                  width: scaled(984),
-                  height: scaled(875),
-                  top: scaled(-381),
-                  left: scaled(-486),
+                  mixBlendMode: "difference",
+                  backgroundColor: "#A4ADFF",
                 }}
-                src={hand}
               />
-            </motion.div>
-          </Absolute>
+              {/* 文字 */}
+              <CursorInverted left={137} top={68} width={1920} height={1080}>
+                <Absolute
+                  left={184}
+                  top={434}
+                  width={996}
+                  className={styles.advice}
+                >
+                  {result.advice1}
+                </Absolute>
+                <Absolute
+                  left={834}
+                  top={817}
+                  right={119}
+                  bottom={178}
+                  className={styles.advice}
+                >
+                  {result.advice2}
+                </Absolute>
+              </CursorInverted>
+            </Absolute>
+            <AbsoluteImage
+              width={984}
+              height={875}
+              top={-381}
+              left={-486}
+              src={hand}
+            />
+          </Cursor>
         )}
       </Page>
       <Page n={12}>
