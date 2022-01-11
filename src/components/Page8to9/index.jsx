@@ -19,7 +19,7 @@ const Canvas = forwardRef(({ canvasWidth, canvasHeight, ...props }, ref) => {
   );
 });
 
-export default function Page89() {
+export default function Page8to9() {
   const canvas1Ref = useRef(null);
   const trigger1 = useCanvas1(canvas1Ref);
   const canvas2Ref = useRef(null);
