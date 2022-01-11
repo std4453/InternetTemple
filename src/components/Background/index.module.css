@@ -5,3 +5,8 @@
   flex-direction: column;
   align-items: stretch;
 }
+
+.image {
+  width: 100vw;
+  height: 843.75vw;
+}

@@ -21,21 +21,21 @@ const query = `?imageMogr2/thumbnail/${window.innerWidth}x/format/webp`;
 export default function Background() {
   return (
     <div className={styles.root}>
-      <Image query={query} src={page15} />
-      <Image query={query} src={page14} />
-      <Image query={query} src={page13} />
-      <Image query={query} src={page12} />
-      <Image query={query} src={page11} />
-      <Image query={query} src={page10} />
-      <Image query={query} src={page9} />
-      <Image query={query} src={page8} />
-      <Image query={query} src={page7} />
-      <Image query={query} src={page6} />
-      <Image query={query} src={page5} />
-      <Image query={query} src={page4} />
-      <Image query={query} src={page3} />
-      <Image query={query} src={page2} />
-      <Image query={query} src={page1} />
+      <Image className={styles.image} query={query} src={page15} />
+      <Image className={styles.image} query={query} src={page14} />
+      <Image className={styles.image} query={query} src={page13} />
+      <Image className={styles.image} query={query} src={page12} />
+      <Image className={styles.image} query={query} src={page11} />
+      <Image className={styles.image} query={query} src={page10} />
+      <Image className={styles.image} query={query} src={page9} />
+      <Image className={styles.image} query={query} src={page8} />
+      <Image className={styles.image} query={query} src={page7} />
+      <Image className={styles.image} query={query} src={page6} />
+      <Image className={styles.image} query={query} src={page5} />
+      <Image className={styles.image} query={query} src={page4} />
+      <Image className={styles.image} query={query} src={page3} />
+      <Image className={styles.image} query={query} src={page2} />
+      <Image className={styles.image} query={query} src={page1} />
     </div>
   );
 }
