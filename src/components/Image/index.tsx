@@ -1,4 +1,4 @@
-import React, { ComponentProps, useMemo } from "react";
+import { ComponentProps, useMemo } from "react";
 import { isOnline } from "utils";
 
 export interface ImageProps extends ComponentProps<"img"> {
