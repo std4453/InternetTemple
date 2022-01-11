@@ -1,5 +1,5 @@
 import React, { useCallback, useLayoutEffect, useMemo, useState } from "react";
-import ballImage from "assets/ball.png";
+import ballImage from "assets/page_89_ball.png";
 import { Path } from "./help";
 import { width, duration, duration2 } from "./constants";
 
