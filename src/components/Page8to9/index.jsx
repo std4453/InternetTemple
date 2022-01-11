@@ -1,6 +1,8 @@
 import bad from "assets/page_89_bad.svg";
 import button from "assets/page_89_button.png";
 import good from "assets/page_89_good.svg";
+import ball from "assets/page_89_ball.png";
+import hand from "assets/page_89_hand.png";
 import {
   Absolute,
   AbsoluteClickArea,
@@ -12,12 +14,22 @@ import { useCanvas1, useCanvas2 } from "./canvas";
 import { duration, duration2 } from "./constants";
 import { chooseDraw } from "./draw";
 import styles from "./index.module.css";
+import { Cursor, CursorInverted } from "components/Cursor";
 
 const Canvas = forwardRef(({ canvasWidth, canvasHeight, ...props }, ref) => {
   return (
     <canvas {...props} width={canvasWidth} height={canvasHeight} ref={ref} />
   );
 });
+
+const ClickArea = ({ onClick, ...props }) => (
+  <AbsoluteClickArea
+    style={{ borderRadius: "50%" }}
+    onClick={onClick}
+    className={styles.click}
+    {...props}
+  />
+);
 
 export default function Page8to9() {
   const canvas1Ref = useRef(null);
@@ -45,36 +57,59 @@ export default function Page8to9() {
   return (
     <>
       <Page n={8}>
-        <AbsoluteClickArea
-          height={118}
-          width={118}
-          left={842}
-          top={37}
-          style={{ borderRadius: "50%" }}
-          onClick={() => {
-            redraw("❤");
-          }}
-        />
-        <AbsoluteClickArea
-          height={112}
-          width={112}
-          left={1050}
-          top={139}
-          style={{ borderRadius: "50%" }}
-          onClick={() => {
-            redraw("💼");
-          }}
-        />
-        <AbsoluteClickArea
-          height={116}
-          width={116}
-          left={854}
-          top={205}
-          style={{ borderRadius: "50%" }}
-          onClick={() => {
-            redraw("💰");
-          }}
-        />
+        <Cursor
+          height={328}
+          width={372}
+          left={815}
+          top={33}
+          autoHide
+          mouseEventFix
+        >
+          <AbsoluteImage
+            top={-373}
+            left={-491}
+            width={1067}
+            height={904}
+            src={hand}
+          />
+          <CursorInverted top={0} right={0} bottom={0} left={0}>
+            <AbsoluteImage
+              height={839}
+              width={959}
+              left={510}
+              top={-195}
+              src={ball}
+              className={styles.ball}
+            />
+            <ClickArea
+              height={118}
+              width={118}
+              left={842}
+              top={37}
+              onClick={() => {
+                redraw("❤");
+              }}
+            />
+            <ClickArea
+              height={112}
+              width={112}
+              left={1050}
+              top={139}
+              onClick={() => {
+                redraw("💼");
+              }}
+            />
+            <ClickArea
+              height={116}
+              width={116}
+              left={854}
+              top={205}
+              onClick={() => {
+                redraw("💰");
+              }}
+            />
+          </CursorInverted>
+        </Cursor>
       </Page>
       <Page n={9}>
         <Absolute

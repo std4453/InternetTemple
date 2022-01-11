@@ -52,3 +52,12 @@
 .ballEnd {
   overflow: hidden;
 }
+
+.ball {
+  pointer-events: none;
+}
+
+.click {
+  pointer-events: all;
+  cursor: inherit !important;
+}

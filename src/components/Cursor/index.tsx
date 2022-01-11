@@ -13,6 +13,7 @@ import {
   useContext,
   useMemo,
   useState,
+  MouseEvent,
 } from "react";
 import styles from "./index.module.css";
 
@@ -26,6 +27,7 @@ export interface CursorProps {
   children: ReactNode;
 
   autoHide?: boolean;
+  mouseEventFix?: boolean;
 }
 
 interface CursorContextValue {
@@ -45,16 +47,23 @@ export function Cursor({
   children,
 
   autoHide = false,
+  mouseEventFix = false,
 }: CursorProps) {
   const x = useMotionValue(((width / 1920) * window.innerWidth) / 2);
   const y = useMotionValue(((height / 1920) * window.innerWidth) / 2);
   const handleMove = useCallback(
-    (event) => {
-      x.set(event.nativeEvent.offsetX);
-      y.set(event.nativeEvent.offsetY);
+    (event: MouseEvent<HTMLDivElement>) => {
+      if (mouseEventFix) {
+        const { top, left } = event.currentTarget.getBoundingClientRect();
+        x.set(event.nativeEvent.clientX - left);
+        y.set(event.nativeEvent.clientY - top);
+      } else {
+        x.set(event.nativeEvent.offsetX);
+        y.set(event.nativeEvent.offsetY);
+      }
       event.stopPropagation();
     },
-    [x, y],
+    [x, y, mouseEventFix],
   );
   const xInverted = useTransform(x, (v) => `calc(${-v}px - ${scaled(left)})`);
   const yInverted = useTransform(y, (v) => `calc(${-v}px - ${scaled(top)})`);
