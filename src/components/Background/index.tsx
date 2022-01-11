@@ -16,7 +16,9 @@ const page13 = "/bg/page_13.png";
 const page14 = "/bg/page_14.png";
 const page15 = "/bg/page_15.png";
 
-const query = `?imageMogr2/thumbnail/${window.innerWidth}x/format/webp`;
+const query = `?imageMogr2/thumbnail/${
+  window.innerWidth * window.devicePixelRatio
+}x/format/webp`;
 
 export default function Background() {
   return (

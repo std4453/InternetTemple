@@ -159,7 +159,9 @@ export default function Page10to13() {
                   top={0}
                   component={Image}
                   src={bg11}
-                  query={`?imageMogr2/thumbnail/${window.innerWidth}x/format/webp`}
+                  query={`?imageMogr2/thumbnail/${
+                    window.innerWidth * window.devicePixelRatio
+                  }x/format/webp`}
                 />
                 <AbsoluteImage
                   width={1920}
@@ -168,7 +170,9 @@ export default function Page10to13() {
                   top={1080}
                   component={Image}
                   src={bg10}
-                  query={`?imageMogr2/thumbnail/${window.innerWidth}x/format/webp`}
+                  query={`?imageMogr2/thumbnail/${
+                    window.innerWidth * window.devicePixelRatio
+                  }x/format/webp`}
                 />
               </CursorInverted>
               {/* 反向效果 */}
