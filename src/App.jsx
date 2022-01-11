@@ -2,7 +2,7 @@ import Page4 from "components/Page4";
 import Background from "components/Background";
 import "./index.css";
 import Page1 from "components/Page1";
-import Page56 from "components/Page56";
+import Page5to6 from "components/Page5to6";
 import Page8to9 from "components/Page8to9";
 import Page2 from "components/Page2";
 import Wrapper from "components/Wrapper";
@@ -18,7 +18,7 @@ export default function App() {
       <Page1 />
       <Page2 />
       <Page4 />
-      <Page56 />
+      <Page5to6 />
       <Page7 />
       <Page8to9 />
       <Page10to13 />

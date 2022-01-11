@@ -46,7 +46,7 @@ function Tag({ tag, hover }) {
   );
 }
 
-export default function Page56() {
+export default function Page5to6() {
   return (
     <>
       <Page n={5}>
