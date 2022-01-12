@@ -7,7 +7,8 @@
 }
 
 .text {
-  font-family: 'Noto Sans SC', sans-serif;
+  font-family: "Noto Sans SC", sans-serif;
+  font-weight: 300;
   /* 24px */
   font-size: 1.25vw;
   line-height: 1.214em;
