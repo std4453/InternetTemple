@@ -137,6 +137,17 @@ export default function Page10to13() {
         </Absolute>
       </Page>
       <Page n={11}>
+        <svg viewBox="0 0 290 157">
+          <defs>
+            <clipPath
+              id="clip"
+              clipPathUnits="objectBoundingBox"
+              transform={`scale(${1 / 290}, ${1 / 157})`}
+            >
+              <path d="M65 -16.5C80.5 -16.5 110.5 -10 148.5 15C158.333 4.5 183.8 -16.5 207 -16.5C236 -16.5 281 34 284 62C287 90 255 141.5 232.5 140.5C210 139.5 162 118 140 107.5C125.5 115 93 139 65 136C37 133 -6.5 108 -6.5 68.5C-6.5 29 49.5 -16.5 65 -16.5Z" />
+            </clipPath>
+          </defs>
+        </svg>
         {result && (
           <Cursor height={880} width={1920} left={0} top={386} autoHide>
             <Absolute
@@ -146,8 +157,7 @@ export default function Page10to13() {
               height={157}
               style={{
                 overflow: "hidden",
-                clipPath:
-                  "path('M65 -16.5C80.5 -16.5 110.5 -10 148.5 15C158.333 4.5 183.8 -16.5 207 -16.5C236 -16.5 281 34 284 62C287 90 255 141.5 232.5 140.5C210 139.5 162 118 140 107.5C125.5 115 93 139 65 136C37 133 -6.5 108 -6.5 68.5C-6.5 29 49.5 -16.5 65 -16.5Z')",
+                clipPath: "url(#clip)",
               }}
             >
               {/* 背景图 */}
@@ -227,7 +237,8 @@ export default function Page10to13() {
           src={text12}
         />
         {result && (
-          <a href={result.avatarLink}>
+          // eslint-disable-next-line react/jsx-no-target-blank
+          <a href={result.avatarLink} target="_blank">
             <AbsoluteImage
               height={207}
               width={207}

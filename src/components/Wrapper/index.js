@@ -8,16 +8,23 @@ export default function Wrapper({ children, numPages }) {
 
   const [scrollInit, setScrollInit] = useState(false);
   useEffect(() => {
-    outerRef.current.scrollTo(0, (numPages - 1) * window.innerHeight);
+    outerRef.current.scrollTo(
+      0,
+      ((numPages * window.innerWidth) / 1920) * 1080 -
+        window.innerHeight -
+        /* MAGIC NUMBER */ 5,
+    );
     setScrollInit(true);
   }, [numPages]);
   const [value, updateScroll] = useScroll();
   const handleScroll = useCallback(() => {
     if (!scrollInit) return;
-    const innerHeight = window.innerHeight * numPages;
+    const pageHeight = (window.innerWidth / 1920) * 1080;
+    const innerHeight = pageHeight * numPages;
     const scrollBottom =
       innerHeight - (outerRef.current.scrollTop + window.innerHeight);
-    const value = (scrollBottom / window.innerWidth) * 100;
+    const value = (scrollBottom / pageHeight) * 100;
+    console.log(value);
     updateScroll(value);
   }, [updateScroll, numPages, scrollInit]);
   useEffect(() => {

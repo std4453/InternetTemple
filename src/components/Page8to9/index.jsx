@@ -3,6 +3,7 @@ import button from "assets/page_89_button.png";
 import good from "assets/page_89_good.svg";
 import ball from "assets/page_89_ball.png";
 import hand from "assets/page_89_hand.png";
+import handHover from "assets/page_89_hand_hover.png";
 import {
   Absolute,
   AbsoluteClickArea,
@@ -54,6 +55,14 @@ export default function Page8to9() {
     [trigger1, trigger2, clear2],
   );
 
+  const [hover, setHover] = useState(false);
+  const handleEnter = useCallback(() => {
+    setHover(true);
+  }, []);
+  const handleLeave = useCallback(() => {
+    setHover(false);
+  }, []);
+
   return (
     <>
       <Page n={8}>
@@ -65,13 +74,23 @@ export default function Page8to9() {
           autoHide
           mouseEventFix
         >
-          <AbsoluteImage
-            top={-373}
-            left={-491}
-            width={1067}
-            height={904}
-            src={hand}
-          />
+          {hover ? (
+            <AbsoluteImage
+              top={-150}
+              left={-166}
+              width={299}
+              height={332}
+              src={handHover}
+            />
+          ) : (
+            <AbsoluteImage
+              top={-170}
+              left={-174}
+              width={348}
+              height={341}
+              src={hand}
+            />
+          )}
           <CursorInverted top={0} right={0} bottom={0} left={0}>
             <AbsoluteImage
               height={839}
@@ -89,6 +108,8 @@ export default function Page8to9() {
               onClick={() => {
                 redraw("❤");
               }}
+              onMouseEnter={handleEnter}
+              onMouseLeave={handleLeave}
             />
             <ClickArea
               height={112}
@@ -98,6 +119,8 @@ export default function Page8to9() {
               onClick={() => {
                 redraw("💼");
               }}
+              onMouseEnter={handleEnter}
+              onMouseLeave={handleLeave}
             />
             <ClickArea
               height={116}
@@ -107,6 +130,8 @@ export default function Page8to9() {
               onClick={() => {
                 redraw("💰");
               }}
+              onMouseEnter={handleEnter}
+              onMouseLeave={handleLeave}
             />
           </CursorInverted>
         </Cursor>

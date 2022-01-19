@@ -4,7 +4,7 @@ import Page from "components/Page";
 import { calcScrollValue, useScrolledAfter } from "components/useOnScroll";
 
 export default function Page4() {
-  const scrolled = useScrolledAfter(calcScrollValue(4, 0));
+  const scrolled = useScrolledAfter(calcScrollValue(3, 540));
 
   return (
     <Page n={4}>

@@ -9,8 +9,8 @@ export default function Page1() {
   return (
     <Page n={1}>
       <AbsoluteImage
-        height={630.16}
-        width={1861.26}
+        height={502.28}
+        width={1800}
         left={60}
         top={86}
         component={Image}

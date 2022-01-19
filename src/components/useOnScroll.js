@@ -75,8 +75,8 @@ export const useScrolledAfter = (threshold) => {
 /**
  * @param page
  * @param bottom px (on figma)
- * @return vw (scaled)
+ * @return page height percentage (scaled)
  */
 export const calcScrollValue = (page, bottom) => {
-  return (page - 1) * 100 + (bottom / 1920) * 100;
+  return (page - 1) * 100 + (bottom / 1080) * 100;
 };
