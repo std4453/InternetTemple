@@ -5,10 +5,12 @@ export interface ImageProps extends ComponentProps<"img"> {
   query?: string;
 }
 
+const online = isOnline();
+
 export function Image({ src, query = "", ...props }: ImageProps) {
-  const actualQuery = useMemo(() => (isOnline() ? query : ""), [query]);
+  const actualQuery = useMemo(() => (online ? query : ""), [query]);
   const domain = useMemo(
-    () => (isOnline() ? "https://static.std4453.com/internet-temple" : ""),
+    () => (online ? "https://static.std4453.com/internet-temple" : ""),
     [],
   );
   const realSrc = useMemo(
