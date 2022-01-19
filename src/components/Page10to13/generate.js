@@ -7,7 +7,7 @@ import avatar6 from "assets/avatars/6.jpg";
 import avatar7 from "assets/avatars/7.jpg";
 import avatar8 from "assets/avatars/8.jpg";
 
-import merch1 from "assets/merchs/1.png";
+import merch1 from "assets/merchs/1.jpg";
 import merch2 from "assets/merchs/2.jpg";
 import merch3 from "assets/merchs/3.jpg";
 import merch4 from "assets/merchs/4.jpg";
