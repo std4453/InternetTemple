@@ -24,7 +24,6 @@ export default function Wrapper({ children, numPages }) {
     const scrollBottom =
       innerHeight - (outerRef.current.scrollTop + window.innerHeight);
     const value = (scrollBottom / pageHeight) * 100;
-    console.log(value);
     updateScroll(value);
   }, [updateScroll, numPages, scrollInit]);
   useEffect(() => {

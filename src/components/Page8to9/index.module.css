@@ -36,7 +36,7 @@
 
 @font-face {
   font-family: 'Alike Angular';
-  src: url(assets/alike-angular-regular.ttf);
+  src: url(assets/alike-angular-regular-subset.woff);
 }
 
 .textBg {
