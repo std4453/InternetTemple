@@ -3,7 +3,7 @@ import { Absolute, AbsoluteImage } from "components/Absolute";
 import { Image } from "components/Image";
 import Page from "components/Page";
 import styles from "./index.module.css";
-const text = "/bg/page_1_text.png";
+import text from "assets/page_1_text.png";
 
 export default function Page1() {
   return (
@@ -13,7 +13,6 @@ export default function Page1() {
         width={1800}
         left={60}
         top={86}
-        component={Image}
         src={text}
       />
       <Absolute width={1920} left={0} bottom={0} className={styles.clouds}>

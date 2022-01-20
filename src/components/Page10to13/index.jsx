@@ -16,9 +16,9 @@ import { motion } from "framer-motion";
 import { useCallback, useMemo, useRef, useState } from "react";
 import generate from "./generate";
 import styles from "./index.module.css";
+import text12 from "assets/page_12_text.png";
 const bg10 = "/bg/page_10.png";
 const bg11 = "/bg/page_11.png";
-const text12 = "/bg/page_12_text.png";
 
 export default function Page10to13() {
   const [name, setName] = useState("");
@@ -233,7 +233,6 @@ export default function Page10to13() {
           width={1920}
           left={0}
           top={-219}
-          component={Image}
           src={text12}
         />
         {result && (
