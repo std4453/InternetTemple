@@ -73,6 +73,7 @@ export default function Page8to9() {
           top={33}
           autoHide
           mouseEventFix
+          absoluteOnTop
           absoluteChildren={
             <>
               <AbsoluteImage

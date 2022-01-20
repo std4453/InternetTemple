@@ -30,6 +30,7 @@ export interface CursorProps {
   mouseEventFix?: boolean;
 
   absoluteChildren?: ReactNode;
+  absoluteOnTop?: boolean;
 
   onClick?: (e: MouseEvent) => void;
 }
@@ -56,6 +57,7 @@ export function Cursor({
   mouseEventFix = false,
 
   absoluteChildren,
+  absoluteOnTop = false,
   onClick,
 }: CursorProps) {
   const x = useMotionValue(((width / 1920) * window.innerWidth) / 2);
@@ -106,7 +108,7 @@ export function Cursor({
         onMouseLeave={handleLeave}
         onClick={onClick}
       >
-        <CursorAbsolute>{absoluteChildren}</CursorAbsolute>
+        {!absoluteOnTop && <CursorAbsolute>{absoluteChildren}</CursorAbsolute>}
         <motion.div
           style={{
             translateX: x,
@@ -123,6 +125,7 @@ export function Cursor({
         >
           {children}
         </motion.div>
+        {absoluteOnTop && <CursorAbsolute>{absoluteChildren}</CursorAbsolute>}
       </Absolute>
     </CursorContext.Provider>
   );
