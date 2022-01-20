@@ -8,6 +8,10 @@ export default function Wrapper({ children, numPages }) {
 
   const [scrollInit, setScrollInit] = useState(false);
   useEffect(() => {
+    console.log(
+      outerRef.current,
+      ((numPages * window.innerWidth) / 1920) * 1080 - window.innerHeight,
+    );
     outerRef.current.scrollTo(
       0,
       ((numPages * window.innerWidth) / 1920) * 1080 -
