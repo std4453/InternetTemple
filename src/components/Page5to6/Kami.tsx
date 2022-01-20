@@ -67,7 +67,6 @@ export default function Kami() {
 
   return (
     <>
-      {el}
       <Page n={6}>
         <Cursor
           top={-66}
@@ -75,22 +74,6 @@ export default function Kami() {
           width={1920}
           height={2394}
           absoluteChildren={[
-            <Absolute
-              component="svg"
-              height={2104}
-              width={1768.5}
-              left={86.5}
-              top={-66}
-              style={{
-                opacity: 0,
-                pointerEvents: "none",
-              }}
-              viewBox="0 -66 1771 2104"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              {results.map(({ pathEl }) => pathEl)}
-            </Absolute>,
             <Absolute
               top={1080}
               left={0}
@@ -109,6 +92,23 @@ export default function Kami() {
             >
               {results.map(({ page6 }) => page6)}
             </Absolute>,
+            <Absolute
+              component="svg"
+              height={2104}
+              width={1768.5}
+              left={86.5}
+              top={-66}
+              style={{
+                opacity: 0,
+                pointerEvents: "none",
+              }}
+              viewBox="0 -66 1771 2104"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              {results.map(({ pathEl }) => pathEl)}
+            </Absolute>,
+            el,
           ]}
           mouseEventFix
           autoHide

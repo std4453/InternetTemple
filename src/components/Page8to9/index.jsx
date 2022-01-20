@@ -15,7 +15,7 @@ import { useCanvas1, useCanvas2 } from "./canvas";
 import { duration, duration2 } from "./constants";
 import { chooseDraw } from "./draw";
 import styles from "./index.module.css";
-import { Cursor, CursorInverted } from "components/Cursor";
+import { Cursor } from "components/Cursor";
 
 const Canvas = forwardRef(({ canvasWidth, canvasHeight, ...props }, ref) => {
   return (

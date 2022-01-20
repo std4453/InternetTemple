@@ -106,6 +106,7 @@ export function Cursor({
         onMouseLeave={handleLeave}
         onClick={onClick}
       >
+        <CursorAbsolute>{absoluteChildren}</CursorAbsolute>
         <motion.div
           style={{
             translateX: x,
@@ -122,7 +123,6 @@ export function Cursor({
         >
           {children}
         </motion.div>
-        <CursorAbsolute>{absoluteChildren}</CursorAbsolute>
       </Absolute>
     </CursorContext.Provider>
   );
