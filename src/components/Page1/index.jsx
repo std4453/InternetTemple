@@ -1,6 +1,5 @@
 import clouds from "assets/page_1_cloud.png";
 import { Absolute, AbsoluteImage } from "components/Absolute";
-import { Image } from "components/Image";
 import Page from "components/Page";
 import styles from "./index.module.css";
 import text from "assets/page_1_text.png";
