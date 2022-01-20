@@ -1,0 +1,21 @@
+@keyframes like {
+  0% {
+    transform: translate(-50%, -50%) translateY(0) scale(1);
+  }
+  65% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50%, -50%) translateY(-23vw) scale(0.15);
+    opacity: 0;
+  }
+}
+
+.like {
+  transform-origin: center top;
+  animation-name: like;
+  animation-timing-function: cubic-bezier(0.3, 0.6, 0.8, 0.7);
+}

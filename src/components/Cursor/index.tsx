@@ -21,18 +21,24 @@ export interface CursorProps {
   width: number;
   height: number;
 
-  left?: number;
-  top?: number;
+  left: number;
+  top: number;
 
   children: ReactNode;
 
   autoHide?: boolean;
   mouseEventFix?: boolean;
+
+  absoluteChildren?: ReactNode;
+
+  onClick?: (e: MouseEvent) => void;
 }
 
 interface CursorContextValue {
   xInverted: MotionValue<string>;
   yInverted: MotionValue<string>;
+  left: number;
+  top: number;
 }
 
 const CursorContext = createContext<CursorContextValue | null>(null);
@@ -48,6 +54,9 @@ export function Cursor({
 
   autoHide = false,
   mouseEventFix = false,
+
+  absoluteChildren,
+  onClick,
 }: CursorProps) {
   const x = useMotionValue(((width / 1920) * window.innerWidth) / 2);
   const y = useMotionValue(((height / 1920) * window.innerWidth) / 2);
@@ -76,8 +85,10 @@ export function Cursor({
     () => ({
       xInverted,
       yInverted,
+      left,
+      top,
     }),
-    [xInverted, yInverted],
+    [xInverted, yInverted, left, top],
   );
 
   return (
@@ -93,11 +104,13 @@ export function Cursor({
         onMouseMove={handleMove}
         onMouseEnter={handleEnter}
         onMouseLeave={handleLeave}
+        onClick={onClick}
       >
         <motion.div
           style={{
             translateX: x,
             translateY: y,
+            pointerEvents: "none",
           }}
           className={styles.inner}
           animate={{
@@ -109,8 +122,18 @@ export function Cursor({
         >
           {children}
         </motion.div>
+        <CursorAbsolute>{absoluteChildren}</CursorAbsolute>
       </Absolute>
     </CursorContext.Provider>
+  );
+}
+
+export function CursorAbsolute({ children }: { children?: ReactNode }) {
+  const { left = 0, top = 0 } = useContext(CursorContext) ?? {};
+  return (
+    <Absolute left={-left} top={-top}>
+      {children}
+    </Absolute>
   );
 }
 

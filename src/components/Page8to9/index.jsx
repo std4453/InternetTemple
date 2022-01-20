@@ -73,6 +73,51 @@ export default function Page8to9() {
           top={33}
           autoHide
           mouseEventFix
+          absoluteChildren={
+            <>
+              <AbsoluteImage
+                height={839}
+                width={959}
+                left={510}
+                top={-195}
+                src={ball}
+                className={styles.ball}
+              />
+              <ClickArea
+                height={118}
+                width={118}
+                left={842}
+                top={37}
+                onClick={() => {
+                  redraw("❤");
+                }}
+                onMouseEnter={handleEnter}
+                onMouseLeave={handleLeave}
+              />
+              <ClickArea
+                height={112}
+                width={112}
+                left={1050}
+                top={139}
+                onClick={() => {
+                  redraw("💼");
+                }}
+                onMouseEnter={handleEnter}
+                onMouseLeave={handleLeave}
+              />
+              <ClickArea
+                height={116}
+                width={116}
+                left={854}
+                top={205}
+                onClick={() => {
+                  redraw("💰");
+                }}
+                onMouseEnter={handleEnter}
+                onMouseLeave={handleLeave}
+              />
+            </>
+          }
         >
           {hover ? (
             <AbsoluteImage
@@ -91,49 +136,6 @@ export default function Page8to9() {
               src={hand}
             />
           )}
-          <CursorInverted top={0} right={0} bottom={0} left={0}>
-            <AbsoluteImage
-              height={839}
-              width={959}
-              left={510}
-              top={-195}
-              src={ball}
-              className={styles.ball}
-            />
-            <ClickArea
-              height={118}
-              width={118}
-              left={842}
-              top={37}
-              onClick={() => {
-                redraw("❤");
-              }}
-              onMouseEnter={handleEnter}
-              onMouseLeave={handleLeave}
-            />
-            <ClickArea
-              height={112}
-              width={112}
-              left={1050}
-              top={139}
-              onClick={() => {
-                redraw("💼");
-              }}
-              onMouseEnter={handleEnter}
-              onMouseLeave={handleLeave}
-            />
-            <ClickArea
-              height={116}
-              width={116}
-              left={854}
-              top={205}
-              onClick={() => {
-                redraw("💰");
-              }}
-              onMouseEnter={handleEnter}
-              onMouseLeave={handleLeave}
-            />
-          </CursorInverted>
         </Cursor>
       </Page>
       <Page n={9}>
