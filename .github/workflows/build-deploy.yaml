@@ -46,14 +46,14 @@ jobs:
         name: production-files
         path: ./build
     
-    - name: Upload to QCloud COS
-      uses: zkqiang/tencent-cos-action@v0.1.0
-      with:
-        args: upload -r -s -y ./build internet-temple
-        secret_id: ${{ secrets.QCLOUD_COS_SECRET_ID }}
-        secret_key: ${{ secrets.QCLOUD_COS_SECRET_KEY }}
-        bucket: ${{ secrets.QCLOUD_COS_BUCKET }}
-        region: ap-shanghai
+    # - name: Upload to QCloud COS
+    #   uses: zkqiang/tencent-cos-action@v0.1.0
+    #   with:
+    #     args: upload -r -s -y ./build internet-temple
+    #     secret_id: ${{ secrets.QCLOUD_COS_SECRET_ID }}
+    #     secret_key: ${{ secrets.QCLOUD_COS_SECRET_KEY }}
+    #     bucket: ${{ secrets.QCLOUD_COS_BUCKET }}
+    #     region: ap-shanghai
 
     - name: Deploy to gh-pages
       uses: peaceiris/actions-gh-pages@v3

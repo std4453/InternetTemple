@@ -28,4 +28,5 @@ yarn build
 
 ## 作者
 
-- Haichuan Zhang - [me@std4453.com](mailto:me@std4453.com)
+- 开发：Haichuan Zhang - [me@std4453.com](mailto:me@std4453.com)
+- 设计：gyuunyuuponm
