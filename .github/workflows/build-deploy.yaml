@@ -63,7 +63,7 @@ jobs:
           accessKeySecret: ${{ secrets.ALIYUN_OSS_ACCESS_KEY_SECRET }}
           bucket: internet-temple
           endpoint: oss-rg-china-mainland.aliyuncs.com
-          folder: /
+          folder: build
           skipSetting: true
           incremental: false
 
