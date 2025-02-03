@@ -55,9 +55,19 @@ jobs:
     #     bucket: ${{ secrets.QCLOUD_COS_BUCKET }}
     #     region: ap-shanghai
 
-    - name: Deploy to gh-pages
-      uses: peaceiris/actions-gh-pages@v3
+    - name: Deploy to Aliyun OSS
+      uses: fangbinwei/aliyun-oss-website-action@v1
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./build
-        cname: internet-temple.std4453.com
+          accessKeyId: ${{ secrets.ALIYUN_OSS_ACCESS_KEY_ID }}
+          accessKeySecret: ${{ secrets.ALIYUN_OSS_ACCESS_KEY_SECRET }}
+          bucket: internet-temple
+          endpoint: oss-rg-china-mainland.aliyuncs.com
+          folder: /
+          skipSetting: true
+
+    # - name: Deploy to gh-pages
+    #   uses: peaceiris/actions-gh-pages@v3
+    #   with:
+    #     github_token: ${{ secrets.GITHUB_TOKEN }}
+    #     publish_dir: ./build
+    #     cname: internet-temple.std4453.com
