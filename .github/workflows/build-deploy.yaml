@@ -65,7 +65,6 @@ jobs:
           endpoint: oss-rg-china-mainland.aliyuncs.com
           folder: build
           skipSetting: true
-          incremental: false
 
     # - name: Deploy to gh-pages
     #   uses: peaceiris/actions-gh-pages@v3

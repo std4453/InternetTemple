@@ -1,5 +1,9 @@
-@import url('https://fonts.googleapis.cn/css2?family=Klee+One:wght@600&display=swap');
+@import url("https://fonts.googleapis.cn/css2?family=Klee+One:wght@600&display=swap");
 
 body {
   margin: 0;
+}
+
+img {
+  user-select: none;
 }

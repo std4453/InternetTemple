@@ -11,4 +11,5 @@ export interface KamiConfig {
   tag: KamiTag;
   hoverTag: KamiTag;
   path: string;
+  sound: string;
 }

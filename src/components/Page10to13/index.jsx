@@ -3,25 +3,29 @@ import cloudLeft from "assets/page_11_cloud_left.png";
 import cloudRight from "assets/page_11_cloud_right.png";
 import hand from "assets/page_11_hand.png";
 import question12 from "assets/page_12_question.png";
+import text12 from "assets/page_12_text.png";
 import question13 from "assets/page_13_question.png";
 import {
   Absolute,
   AbsoluteClickArea,
-  AbsoluteImage
+  AbsoluteImage,
 } from "components/Absolute";
 import { Cursor, CursorInverted } from "components/Cursor";
 import { Image } from "components/Image";
 import Page from "components/Page";
 import { motion } from "framer-motion";
 import { useCallback, useMemo, useRef, useState } from "react";
+import { useStore } from "store";
+import { useHowl } from "utils";
 import generate from "./generate";
 import styles from "./index.module.css";
-import text12 from "assets/page_12_text.png";
 const bg10 = "/bg/page_10.png";
 const bg11 = "/bg/page_11.png";
 
 export default function Page10to13() {
   const [name, setName] = useState("");
+
+  const howl = useHowl("/audio/part3.mp3");
 
   const inputRef = useRef(null);
   const [submitted, setSubmitted] = useState(false);
@@ -33,10 +37,13 @@ export default function Page10to13() {
         if (!value) return false;
         setName(value);
         setSubmitted(true);
+        if (useStore.getState().soundEnabled) {
+          howl?.play();
+        }
       }
       return false;
     },
-    [submitted],
+    [submitted, howl],
   );
 
   const result = useMemo(() => {

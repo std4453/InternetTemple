@@ -11,13 +11,16 @@
     "b-spline": "^2.0.2",
     "classnames": "^2.3.1",
     "framer-motion": "^5.5.5",
+    "howler": "^2.2.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "seedrandom": "^3.0.5"
+    "seedrandom": "^3.0.5",
+    "zustand": "^4.5.6"
   },
   "devDependencies": {
     "@craco/craco": "^6.4.3",
     "@types/b-spline": "^2.0.0",
+    "@types/howler": "^2.2.12",
     "@types/jest": "^27.4.0",
     "@types/node": "^17.0.8",
     "@types/react": "^17.0.38",

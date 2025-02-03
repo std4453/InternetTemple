@@ -1,5 +1,9 @@
 import { Image } from "components/Image";
+import { useEffect } from "react";
+import { useStore } from "store";
+import { useHowl } from "utils";
 import styles from "./index.module.css";
+
 const page1 = "/bg/page_1.png";
 const page2 = "/bg/page_2.png";
 const page3 = "/bg/page_3.png";
@@ -21,6 +25,24 @@ const query = `?imageMogr2/thumbnail/${
 }x/format/webp`;
 
 export default function Background() {
+  const soundEnabled = useStore((s) => s.soundEnabled);
+
+  const howl = useHowl("/audio/bgm_lp.mp3", {
+    loop: true,
+  });
+
+  useEffect(() => {
+    if (!howl) {
+      return;
+    }
+
+    if (soundEnabled) {
+      howl?.play();
+    } else {
+      howl?.pause();
+    }
+  }, [howl, soundEnabled]);
+
   return (
     <div className={styles.root}>
       <Image className={styles.image} query={query} src={page15} />

@@ -6,11 +6,13 @@ import Page from "components/Page";
 import { kamiData } from "components/Page5to6/data";
 import { KamiConfig } from "components/Page5to6/type";
 import { motion } from "framer-motion";
-import { useCallback, useState } from "react";
+import { cloneElement, useCallback, useState } from "react";
 import useLike from "./useLike";
+import { useHowl } from "utils";
+import { useStore } from "store";
 
 function useKami(
-  { page, path, tag, hoverTag }: KamiConfig,
+  { page, path, tag, hoverTag, sound }: KamiConfig,
   setGlobalHover: (hover: boolean) => void,
 ) {
   const [hover, setHover] = useState(false);
@@ -23,11 +25,23 @@ function useKami(
     setGlobalHover?.(false);
   }, [setGlobalHover]);
 
+  const howl = useHowl(`/audio/${sound}.mp3`);
+  const soundEnabled = useStore((state) => state.soundEnabled);
+
+  const play = useCallback(() => {
+    if (!howl || !soundEnabled) {
+      return;
+    }
+
+    howl.play();
+  }, [howl, soundEnabled]);
+
   const pathEl = (
     <path
       d={path}
       onMouseEnter={handleHover}
       onMouseLeave={handleLeave}
+      onClick={play}
       fill="black"
       style={{ pointerEvents: "auto" }}
     />
@@ -80,8 +94,11 @@ export default function Kami() {
               width={1920}
               height={1080}
               style={{ pointerEvents: "none", userSelect: "none" }}
+              key={1}
             >
-              {results.map(({ page5 }) => page5)}
+              {results.map(({ page5 }, i) =>
+                page5 ? cloneElement(page5, { key: i }) : null,
+              )}
             </Absolute>,
             <Absolute
               top={0}
@@ -89,8 +106,11 @@ export default function Kami() {
               width={1920}
               height={1080}
               style={{ pointerEvents: "none", userSelect: "none" }}
+              key={2}
             >
-              {results.map(({ page6 }) => page6)}
+              {results.map(({ page6 }, i) =>
+                page6 ? cloneElement(page6, { key: i }) : null,
+              )}
             </Absolute>,
             <Absolute
               component="svg"
@@ -105,10 +125,11 @@ export default function Kami() {
               viewBox="0 -66 1771 2104"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
+              key={3}
             >
-              {results.map(({ pathEl }) => pathEl)}
+              {results.map(({ pathEl }, i) => cloneElement(pathEl, { key: i }))}
             </Absolute>,
-            el,
+            cloneElement(el, { key: 4 }),
           ]}
           mouseEventFix
           autoHide

@@ -14,6 +14,8 @@ import { Cursor } from "components/Cursor";
 import Page from "components/Page";
 import { scaled } from "components/util";
 import { forwardRef, useCallback, useRef, useState } from "react";
+import { useStore } from "store";
+import { useHowl } from "utils";
 import { useCanvas1, useCanvas2 } from "./canvas";
 import { duration, duration2 } from "./constants";
 import { chooseDraw } from "./draw";
@@ -40,6 +42,8 @@ export default function Page8to9() {
   const canvas2Ref = useRef(null);
   const [trigger2, clear2] = useCanvas2(canvas2Ref);
 
+  const howl = useHowl("/audio/part2.mp3");
+
   const [draw, setDraw] = useState(null);
   const redraw = useCallback(
     (type) => {
@@ -50,11 +54,16 @@ export default function Page8to9() {
       setTimeout(() => {
         trigger2(newDraw.lucky, type);
       }, duration);
+
+      if (useStore.getState().soundEnabled) {
+        howl?.play();
+      }
+
       setTimeout(() => {
         setDraw(newDraw);
       }, duration + duration2);
     },
-    [trigger1, trigger2, clear2],
+    [trigger1, trigger2, clear2, howl],
   );
 
   const [hover, setHover] = useState(false);
