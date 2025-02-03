@@ -10,3 +10,24 @@
 .clouds {
   animation: clouds 30s linear infinite;
 }
+
+.credits {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 11.15vw;
+  display: flex;
+  flex-direction: column;
+  
+  font-family: 'Klee One', cursive;
+  font-weight: 600;
+  font-size: 1.25vw;
+  line-height: 1.08;
+  text-align: center;
+}
+
+.creditsText {
+  white-space: pre;
+  margin-top: 5.57vw;
+}
+

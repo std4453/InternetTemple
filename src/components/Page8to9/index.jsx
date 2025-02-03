@@ -1,7 +1,8 @@
 import bad from "assets/page_89_bad.svg";
-import button from "assets/page_89_button.png";
-import good from "assets/page_89_good.svg";
 import ball from "assets/page_89_ball.png";
+import button from "assets/page_89_button.png";
+import fugui from "assets/page_89_fugui.png";
+import good from "assets/page_89_good.svg";
 import hand from "assets/page_89_hand.png";
 import handHover from "assets/page_89_hand_hover.png";
 import {
@@ -9,13 +10,14 @@ import {
   AbsoluteClickArea,
   AbsoluteImage,
 } from "components/Absolute";
+import { Cursor } from "components/Cursor";
 import Page from "components/Page";
+import { scaled } from "components/util";
 import { forwardRef, useCallback, useRef, useState } from "react";
 import { useCanvas1, useCanvas2 } from "./canvas";
 import { duration, duration2 } from "./constants";
 import { chooseDraw } from "./draw";
 import styles from "./index.module.css";
-import { Cursor } from "components/Cursor";
 
 const Canvas = forwardRef(({ canvasWidth, canvasHeight, ...props }, ref) => {
   return (
@@ -149,6 +151,28 @@ export default function Page8to9() {
             backgroundColor: "#FFFFFF",
           }}
         />
+        <Absolute left={84} top={203} width={320} height={292}>
+          <div
+            style={{
+              border: `${scaled(2)} solid #000000`,
+            }}
+          >
+            <img
+              src={fugui}
+              alt="fugui"
+              style={{
+                width: scaled(316),
+                height: scaled(236),
+                display: "block",
+              }}
+            />
+          </div>
+          <div className={styles.fuguiText}>
+            ～*友情演出*～
+            <br />
+            @福貴
+          </div>
+        </Absolute>
         <AbsoluteImage
           height={190}
           width={374}

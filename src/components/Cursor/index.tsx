@@ -8,12 +8,12 @@ import {
 } from "framer-motion";
 import {
   createContext,
+  MouseEvent,
   ReactNode,
   useCallback,
   useContext,
   useMemo,
   useState,
-  MouseEvent,
 } from "react";
 import styles from "./index.module.css";
 
@@ -33,6 +33,8 @@ export interface CursorProps {
   absoluteOnTop?: boolean;
 
   onClick?: (e: MouseEvent) => void;
+  onMouseEnter?: (e: MouseEvent) => void;
+  onMouseLeave?: (e: MouseEvent) => void;
 }
 
 interface CursorContextValue {
@@ -59,6 +61,8 @@ export function Cursor({
   absoluteChildren,
   absoluteOnTop = false,
   onClick,
+  onMouseEnter,
+  onMouseLeave,
 }: CursorProps) {
   const x = useMotionValue(((width / 1920) * window.innerWidth) / 2);
   const y = useMotionValue(((height / 1920) * window.innerWidth) / 2);
@@ -80,8 +84,20 @@ export function Cursor({
   const yInverted = useTransform(y, (v) => `calc(${-v}px - ${scaled(top)})`);
 
   const [inside, setInside] = useState(false);
-  const handleEnter = useCallback(() => setInside(true), []);
-  const handleLeave = useCallback(() => setInside(false), []);
+  const handleEnter = useCallback(
+    (e: MouseEvent) => {
+      setInside(true);
+      onMouseEnter?.(e);
+    },
+    [onMouseEnter],
+  );
+  const handleLeave = useCallback(
+    (e: MouseEvent) => {
+      setInside(false);
+      onMouseLeave?.(e);
+    },
+    [onMouseLeave],
+  );
 
   const value = useMemo(
     () => ({

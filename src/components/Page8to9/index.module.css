@@ -62,3 +62,12 @@
   pointer-events: all;
   cursor: inherit !important;
 }
+
+.fuguiText {
+  font-family: "Klee One", cursive;
+  font-weight: 600;
+  text-align: center;
+  font-size: 1.25vw;
+  line-height: 1.08;
+  color: #000000;
+}

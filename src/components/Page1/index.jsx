@@ -2,17 +2,18 @@ import clouds from "assets/page_1_cloud.png";
 import { Absolute, AbsoluteImage } from "components/Absolute";
 import Page from "components/Page";
 import styles from "./index.module.css";
-import text from "assets/page_1_text.png";
+import text2 from "assets/page_1_text2.png";
+import { Disclaimer } from "./Disclaimer";
 
 export default function Page1() {
   return (
     <Page n={1}>
       <AbsoluteImage
-        height={502.28}
-        width={1800}
-        left={60}
-        top={86}
-        src={text}
+        height={1080}
+        width={1920}
+        left={0}
+        top={0}
+        src={text2}
       />
       <Absolute width={1920} left={0} bottom={0} className={styles.clouds}>
         <AbsoluteImage
@@ -33,6 +34,7 @@ export default function Page1() {
           }}
         />
       </Absolute>
+      <Disclaimer />
     </Page>
   );
 }
