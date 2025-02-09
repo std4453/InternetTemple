@@ -43,6 +43,26 @@ export default function Background() {
     }
   }, [howl, soundEnabled]);
 
+  useEffect(() => {
+    const onVisibilityChange = () => {
+      if (!howl || !soundEnabled) {
+        return;
+      }
+
+      if (document.hidden) {
+        howl?.pause();
+      } else {
+        howl?.play();
+      }
+    };
+
+    document.addEventListener("visibilitychange", onVisibilityChange);
+
+    return () => {
+      document.removeEventListener("visibilitychange", onVisibilityChange);
+    };
+  });
+
   return (
     <div className={styles.root}>
       <Image className={styles.image} query={query} src={page15} />
