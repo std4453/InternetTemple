@@ -27,10 +27,9 @@
 }
 
 .advice {
-  text-align: center;
+  text-align: start;
   /* 48px */
   font-size: 2.5vw;
-  white-space: nowrap;
   font-family: 'Noto Sans TC', sans-serif;
   line-height: 1.21;
   color: #FFFFFF;

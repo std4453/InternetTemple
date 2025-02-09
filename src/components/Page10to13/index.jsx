@@ -156,7 +156,7 @@ export default function Page10to13() {
           </defs>
         </svg>
         {result && (
-          <Cursor height={880} width={1920} left={0} top={386} autoHide>
+          <Cursor height={1080} width={1920} left={0} top={246} autoHide>
             <Absolute
               left={-146}
               top={-63}
@@ -204,24 +204,26 @@ export default function Page10to13() {
                 }}
               />
               {/* 文字 */}
-              <CursorInverted left={137} top={68} width={1920} height={1080}>
+              <CursorInverted
+                left={146}
+                top={63 + 365}
+                width={1920}
+                height={1080}
+              >
                 <Absolute
-                  left={184}
-                  top={434}
-                  width={996}
+                  left={result.advice1Pos.x}
+                  top={result.advice1Pos.y}
+                  width={925}
                   className={styles.advice}
-                >
-                  {result.advice1}
-                </Absolute>
+                  dangerouslySetInnerHTML={{ __html: result.advice1 }}
+                />
                 <Absolute
-                  left={834}
-                  top={817}
-                  right={119}
-                  bottom={178}
+                  left={result.advice2Pos.x}
+                  top={result.advice2Pos.y}
+                  width={790}
                   className={styles.advice}
-                >
-                  {result.advice2}
-                </Absolute>
+                  dangerouslySetInnerHTML={{ __html: result.advice2 }}
+                />
               </CursorInverted>
             </Absolute>
             <AbsoluteImage
